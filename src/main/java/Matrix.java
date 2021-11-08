@@ -34,10 +34,47 @@ class Matrix{
         return s;
     }
 
+    public void setRow (int rowIndex, double[] rowToSet){
+        mat[rowIndex] = rowToSet;
+    }
+
+    public void setColumn(int colIndex, double[] colToSet){
+        for (int i = 0; i < mat.length; i++){
+            if (i > colToSet.length)
+                mat[i][colIndex] = 0;
+            else            mat[i][colIndex] = colToSet[i];
+        }
+    }
+
+    public void gaussjordanify(){
+        int k = -1;
+        int l = -1;
+
+        int K = mat[0].length;
+        int L = mat.length;
+        while (true){
+            k++;
+            l++;
+            if (l > L)break;
+
+            boolean equalsZero = false;
+            for (int i = k; i < K; i++){
+                if (mat[i][l] == 0){
+                    equalsZero = true;
+                }
+            }
+            if (equalsZero){
+                k--;
+            } else {
+                
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Matrix m = new Matrix(5, 5);
-        m.mat[3][2] = 32;
-        m.mat[2][3] = 23;
+        m.setColumn(2, new double[]{5, 3, 4, 0, 0});
+        m.setRow(1, new double[]{5, 4, 3, 2, 1});
         System.out.println(m.toString());
     }
 }
