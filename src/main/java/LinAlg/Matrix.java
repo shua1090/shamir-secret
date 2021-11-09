@@ -1,7 +1,14 @@
+package LinAlg;
+
 class Matrix{
     double[][] mat;
+    int rowLength;
+    int colLength;
+
     public Matrix(int rowCount, int colCount){
         mat = new double[rowCount][colCount];
+        this.rowLength = rowCount;
+        this.colLength = colCount;
     }
 
     public double[] getRow(int rowIndex){
