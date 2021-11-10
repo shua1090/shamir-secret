@@ -1,5 +1,7 @@
 package LinAlg;
 
+import java.math.BigDecimal;
+
 public class GuassJordanElim {
     public static void inplaceGaussianElimination(Matrix m){
         int counterRow = 0;
@@ -75,15 +77,17 @@ public class GuassJordanElim {
       // m.setRow(0, new double[]{1,1,2,8});
         // m.setRow(1, new double[]{-1, -2,3,1});
         // m.setRow(2, new double[]{3, -7,4,10});
-        Polynomial p = new Polynomial(new double[]{1, 1, 1,1});
+        
         String pointString = "(-2, -32)#(-1, 15)#(1,43)#(2,144)";
         String[] strings = pointString.split("#");
+        Polynomial p = new Polynomial(strings.length);
         Point[] points = new Point[4];
         for (int i = 0; i < points.length; i++){
             points[i] = Point.stringToPoint(strings[i]);
         }
         //{new Point(-0.7, 1.55), new Point( 1, 16 ), new Point(-2,10)};
 
+        System.out.println( new BigDecimal("2").divide(BigDecimal.valueOf(50000)));
         Matrix m = new Matrix(Matrix.matrixMaker(p, points));
         System.out.println(m);
         GuassJordanElim.inplaceSolve(m);

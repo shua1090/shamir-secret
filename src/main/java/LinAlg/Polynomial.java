@@ -17,11 +17,15 @@ class Point{
         p.y = Double.valueOf(pointString.split(",")[1]);
         return p;
     }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," +y+")";
+    }
 }
 
 public class Polynomial {
     double[] coefficients;
-
 
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
@@ -41,6 +45,9 @@ public class Polynomial {
 
     public Polynomial(int degree){
         coefficients = new double[degree+1];
+        for (int i = 0; i <coefficients.length; i++){
+            coefficients[i] = 1;
+        }
     }
 
     public Polynomial(double[] coefficients){
@@ -100,6 +107,15 @@ public class Polynomial {
         }
         newTerms[newTerms.length-1] = p.y;
         return newTerms;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // TODO Auto-generated method stub
+        if (obj instanceof Polynomial){
+            Polynomial other = (Polynomial) obj;
+        }
+        return super.equals(obj);
     }
 
 }
